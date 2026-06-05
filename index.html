@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Crazy Relay Stadium</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="stadium-glow"></div>
+  <main class="app-shell">
+    <section id="start-screen" class="screen screen-active hero-screen">
+      <div class="hero-card">
+        <p class="eyebrow">전략 자동 계주 · 코믹 스포츠 시뮬레이션</p>
+        <h1>Crazy Relay Stadium</h1>
+        <p class="hero-copy">
+          육상종합경기장 트랙 위에서 거북이, 로켓 신발, 날개 주자들이 바통을 넘깁니다.
+          팀 수와 주자 수를 고르고, 순서를 짜면 경기는 자동으로 폭주합니다!
+        </p>
+        <button id="go-setup" class="primary-button">게임 설정 시작</button>
+      </div>
+    </section>
+
+    <section id="setup-screen" class="screen setup-screen" aria-live="polite">
+      <header class="screen-header">
+        <div>
+          <p class="eyebrow">프리레이스 전략실</p>
+          <h2>팀과 주자 배치를 선택하세요</h2>
+        </div>
+        <button id="back-start" class="ghost-button">시작 화면</button>
+      </header>
+
+      <div class="setup-grid">
+        <aside class="control-panel">
+          <label>
+            참가 팀 수
+            <input id="team-count" type="range" min="2" max="10" value="6" />
+            <strong><span id="team-count-label">6</span>팀</strong>
+          </label>
+
+          <label>
+            계주 인원 수
+            <select id="relay-size">
+              <option value="2">2명 · 총 800m</option>
+              <option value="4" selected>4명 · 총 1600m</option>
+              <option value="6">6명 · 총 2400m</option>
+            </select>
+          </label>
+
+          <fieldset>
+            <legend>선택 모드</legend>
+            <label class="radio-line">
+              <input type="radio" name="selection-mode" value="team" checked />
+              팀 전체 선택
+            </label>
+            <label class="radio-line">
+              <input type="radio" name="selection-mode" value="runner" />
+              팀별 주자 직접 선택
+            </label>
+          </fieldset>
+
+          <div class="hint-box">
+            <strong>전략 팁</strong>
+            <p>후반형 주자는 마지막, 안정형은 첫 주자, 리스크형은 중간에 배치하면 역전 확률이 커집니다.</p>
+          </div>
+
+          <button id="start-race" class="primary-button full-width">경기 시작</button>
+        </aside>
+
+        <section class="team-builder">
+          <div class="builder-toolbar">
+            <h3>출전 팀 라인업</h3>
+            <button id="randomize-lineups" class="ghost-button">무작위 배치</button>
+          </div>
+          <div id="team-config-list" class="team-config-list"></div>
+        </section>
+      </div>
+    </section>
+
+    <section id="race-screen" class="screen race-screen">
+      <header class="race-header">
+        <div>
+          <p class="eyebrow">생중계 중</p>
+          <h2 id="race-title">Crazy Relay Stadium 결승전</h2>
+        </div>
+        <div class="race-actions">
+          <button id="pause-race" class="ghost-button">일시정지</button>
+          <button id="quit-race" class="ghost-button">설정으로</button>
+        </div>
+      </header>
+
+      <div id="commentary" class="commentary">경기장에 함성이 울립니다. 출발 준비!</div>
+      <div id="effect-banner" class="effect-banner" aria-live="assertive"></div>
+
+      <div class="race-layout">
+        <section class="track-card">
+          <div class="stadium-track" id="track-lanes"></div>
+        </section>
+
+        <aside class="race-side-panel">
+          <section>
+            <h3>실시간 순위</h3>
+            <div id="ranking-list" class="ranking-list"></div>
+          </section>
+          <section>
+            <h3>이벤트 로그</h3>
+            <div id="event-log" class="event-log"></div>
+          </section>
+        </aside>
+      </div>
+    </section>
+
+    <section id="result-screen" class="screen result-screen">
+      <div class="result-card">
+        <p class="eyebrow">경기 종료</p>
+        <h2 id="winner-title">우승 팀</h2>
+        <p id="mvp-line" class="mvp-line"></p>
+        <div id="result-list" class="result-list"></div>
+        <div class="result-actions">
+          <button id="rematch" class="primary-button">같은 설정으로 다시하기</button>
+          <button id="return-setup" class="ghost-button">설정으로 돌아가기</button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
