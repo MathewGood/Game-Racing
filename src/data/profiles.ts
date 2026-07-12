@@ -1,0 +1,4 @@
+export type Profile={id:string;name:string;tag:string;reaction:number;accel:number;topSpeed:number;endurance:number;variance:number};
+export const profiles:Profile[]=[
+ ['bolt','폭발적 스타트형','START',.125,.99,11.82,.93,.08],['launch','초반 지배형','LAUNCH',.118,.98,11.68,.94,.07],['velocity','후반 최고속도형','TOP SPEED',.143,.91,12.18,.98,.10],['anchor','스피드 유지형','ENDURANCE',.139,.92,11.86,1,.06],['precision','정밀 반응형','REACTION',.108,.95,11.72,.95,.06],['balanced','챔피언 밸런스형','ALL ROUND',.132,.95,11.91,.97,.07],['power','파워 가속형','POWER',.136,1,11.73,.93,.11],['flow','부드러운 가속형','FLOW',.145,.94,11.94,.98,.07],['chaser','후반 추격형','CHASE',.151,.90,12.22,.99,.12],['stable','대회 안정형','STABLE',.134,.94,11.79,.98,.05],['risk','하이리스크형','GAMBLE',.112,.98,12.12,.92,.15],['tempo','리듬 유지형','TEMPO',.141,.93,11.88,.995,.06]
+].map(([id,name,tag,reaction,accel,topSpeed,endurance,variance])=>({id,name,tag,reaction,accel,topSpeed,endurance,variance} as Profile));
